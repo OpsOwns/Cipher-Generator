@@ -1,0 +1,71 @@
+﻿<Window x:Class="CipherGenerator.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Szyfrogram" Height="466.288" Width="724.133" WindowStartupLocation="CenterScreen" FontFamily="Segoe UI Light" FontSize="18" Icon="/CipherGenerator;component/Images/icon.ico" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/btc.jpg"/>
+    </Window.Background>
+    <Grid>
+        <TextBox Height="33" Margin="452,225,26.6,178.8" TextWrapping="Wrap" Width="239" Text="{Binding WordToCrypt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <ComboBox HorizontalAlignment="Left" SelectedItem="{Binding CihperType,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding CipherColletion}" Margin="137,19,0,0" VerticalAlignment="Top" Width="127" Height="34" BorderBrush="White">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+
+        <Button Content="" IsEnabled="{Binding EnableButton, UpdateSourceTrigger=PropertyChanged}" Command="{Binding EncryptCommand}" Margin="452,338,192.6,34.8" RenderTransformOrigin="-0.148,0.404" BorderBrush="Transparent">
+            <Button.Background>
+                <ImageBrush ImageSource="{Binding EncryptImg, UpdateSourceTrigger=PropertyChanged}"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label Content="Słowo" HorizontalAlignment="Left" Margin="364,224,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.04,0.397" Foreground="White" FontWeight="Bold"/>
+        <Label Content="Wynik" HorizontalAlignment="Left" Margin="367,277,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.516,-0.099" Foreground="White" FontWeight="Bold"/>
+        <TextBox IsEnabled="{Binding EnableBox, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}" Height="33
+                 " Margin="452,174,26.6,229.8" TextWrapping="Wrap" Text="{Binding TextKey, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Width="239"/>
+        <Label Content="Klucz" HorizontalAlignment="Left" Margin="367,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.04,0.397" Foreground="White" FontWeight="Bold"/>
+        <Button Command="{Binding DecryptCommand, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding EnableButtonDet , UpdateSourceTrigger=PropertyChanged}" Margin="617,338,26.6,34.8" RenderTransformOrigin="1.637,0.639" BorderBrush="Transparent">
+            <Button.Background>
+                <ImageBrush ImageSource="{Binding DecryptImg, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label Content="Wybierz szyfr" HorizontalAlignment="Left" Margin="20,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.04,0.397" Foreground="White" FontWeight="Bold"/>
+        <TextBox Height="33" Margin="452,277,26.6,126.8" TextWrapping="Wrap" Width="239"  IsReadOnly ="True" Text="{Binding WordResult, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Margin="452,19,26.6,291.8" TextWrapping="Wrap" Text="{Binding TextMsg, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" RenderTransformOrigin="0.302,-0.77" Height="126" Width="239" FontSize="18" Foreground="White" FontWeight="Bold"/>
+        <Label Content="Wykonał Krzysztof Papciak" HorizontalAlignment="Left" Margin="35,357,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.04,0.397" Foreground="White" FontWeight="Bold" FontSize="24"/>
+
+    </Grid>
+</Window>
